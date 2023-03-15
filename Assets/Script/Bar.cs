@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Bar : MonoBehaviour
+{
+    // Start is called before the first frame update
+	public RectTransform topLayer;
+	
+	[SerializeField] private float _maxWidth;
+	
+	void Start()
+	{
+		_maxWidth = topLayer.rect.width;
+	}
+	
+	public void SetBar(float current, float max)
+	{
+		float percent = current / max;
+		
+		// toplayer.rect.width = percent * _maxWidth;
+		
+		topLayer.sizeDelta = new Vector2 (percent * _maxWidth, topLayer.sizeDelta.y);	
+		
+	}
+}
