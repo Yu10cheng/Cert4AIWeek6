@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bar : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
 	public RectTransform topLayer;
 	
 	[SerializeField] private float _maxWidth;

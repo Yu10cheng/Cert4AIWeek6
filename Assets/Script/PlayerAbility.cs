@@ -8,6 +8,8 @@ public abstract class PlayerAbility : MonoBehaviour
 	protected Timer _turnTimer;
 	[SerializeField]
 	protected Enemy _enemy;
+	[SerializeField]
+	protected Player _player;
 	
 	public abstract void UseAbility();
 	

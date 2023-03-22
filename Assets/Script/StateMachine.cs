@@ -12,7 +12,9 @@ public class StateMachine : MonoBehaviour
 	}
 	
 	[SerializeField] private State _state;
-	[SerializeField] private Enemy _enemy;   
+	[SerializeField] private Enemy _enemy;
+	[SerializeField] private Timer _turnTimer;	
+	[SerializeField] private EnemyAttack _enemyA;
 	
 	//Start
 	//----> NextState();
@@ -50,6 +52,12 @@ public class StateMachine : MonoBehaviour
 		
 		while(_state == State.Normal)
 		{
+			if(!_turnTimer.IsNextTurn())
+			{
+				yield return null;	
+				continue;
+			}
+			
 			if(_enemy.CurrentHealth() < 30)
 			{
 				_state = State.LowHp;
@@ -65,7 +73,15 @@ public class StateMachine : MonoBehaviour
 		Debug.Log("Entering LowHp State");	
 		while(_state == State.LowHp)
 		{
+			if(!_turnTimer.IsNextTurn())
+			{
+				yield return null;	
+				continue;
+			}
 			_enemy.Heal();
+			_turnTimer.ResetTimer();
+			_enemyA.Usebility();
+			
 			if(_enemy.CurrentHealth() > 70)
 			{
 				_state = State.Normal;
