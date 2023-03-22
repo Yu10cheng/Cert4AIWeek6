@@ -80,7 +80,7 @@ public class StateMachine : MonoBehaviour
 			}
 			_enemy.Heal();
 			_turnTimer.ResetTimer();
-			_enemyA.Usebility();
+			_enemyA.UseAbility();
 			
 			if(_enemy.CurrentHealth() > 70)
 			{
