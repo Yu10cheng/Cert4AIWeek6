@@ -10,6 +10,7 @@ public class AttackAbility : PlayerAbility
 		{
 			int damage = Random.Range(20,30);
 			Debug.Log("ATTACK" + damage);
+			_enemy.DealDamage(damage);
 			EndTurn();
 		}
 	}
